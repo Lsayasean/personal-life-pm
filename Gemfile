@@ -49,8 +49,6 @@ group :development do
   gem "guard-bundler", "~> 2.1"
   # Reload the browser when view files change
   gem "guard-livereload", "~> 2.5"
-  # Run arbitrary processes from Guardfile
-  gem "guard-process", "~> 1.2"
   # Start and restart Rails server when necessary
   gem "guard-rails", "~> 0.8"
 end
