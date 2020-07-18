@@ -28,6 +28,9 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# bootstrap for styling 
+gem 'bootstrap', '~> 4.5'
+
 # Devise is a flexible authentication solution for Rails based on Warden
 gem 'devise', '~> 4.7', '>= 4.7.2'
 
