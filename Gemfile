@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # bootstrap for styling 
 gem 'bootstrap', '~> 4.5'
 
+# jquery for bootstrap
+gem 'jquery-rails'
+
 # Devise is a flexible authentication solution for Rails based on Warden
 gem 'devise', '~> 4.7', '>= 4.7.2'
 
