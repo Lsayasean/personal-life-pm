@@ -15,6 +15,18 @@
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
+guard :bundler do
+  require 'guard/bundler'
+  require 'guard/bundler/verify'
+  helper = Guard::Bundler::Verify.new
+
+  files = ['Gemfile']
+  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
+
+  # Assume files are symlinked from somewhere
+  files.each { |file| watch(helper.real_path(file)) }
+end
+
 guard 'livereload' do
   extensions = {
     css: :css,
@@ -53,24 +65,6 @@ guard 'livereload' do
   watch(%r{app/helpers/.+\.rb})
   watch(%r{config/locales/.+\.yml})
 end
-
-guard :bundler do
-  require 'guard/bundler'
-  require 'guard/bundler/verify'
-  helper = Guard::Bundler::Verify.new
-
-  files = ['Gemfile']
-  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
-
-  # Assume files are symlinked from somewhere
-  files.each { |file| watch(helper.real_path(file)) }
-end
-
-# This is an example with all options that you can specify for guard-process
-guard 'process', :name => 'name of your process', :command => 'ruby path/to/your/file.rb', :env => {"ENV1" => "value 1", "ENV2" => "value 2"}, :stop_signal => "KILL"  do
-  watch('Gemfile.lock')
-end
-
 
 # Guard-Rails supports a lot options with default values:
 # daemon: false                        # runs the server as a daemon.
